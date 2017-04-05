@@ -1,18 +1,26 @@
 (function () {
 
     angular.module('app')
-        .controller('HomeController', ['dataService', 'notifier', '$route', '$log', HomeController]);
+        .controller('HomeController', ['dataService', 'notifier', '$route', '$log', '$state', HomeController]);
 
-    function HomeController(dataService, notifier, $route, $log) {
+    function HomeController(dataService, notifier, $route, $log, $state) {
 
         var vm = this;
 
         vm.message = 'Welcome to School Buddy!';
 
+        //vm.refresh = function () {
+        //    $log.debug("$route service");
+        //    $log.debug($route.current);
+        //    $log.debug($route.routes);
+        //    $route.reload();
+        //};
+
         vm.refresh = function () {
-            $log.debug($route.current);
-            $log.debug($route.routes);
-            $route.reload();
+            $log.debug("$state service");
+            $log.debug($state.current);
+            $log.debug($state.routes);
+            $state.reload();
         };
 
         dataService.getAllSchools()

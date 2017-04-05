@@ -560,6 +560,7 @@
     <Content Include="public\app\bower_components\angular-route\bower.json" />
     <Content Include="public\app\bower_components\angular-route\package.json" />
     <Content Include="public\app\bower_components\angular-route\README.md" />
+    <Content Include="public\app\bower_components\angular-ui-router.min.js" />
     <Content Include="public\app\bower_components\angular\.bower.json" />
     <Content Include="public\app\bower_components\angular\angular.min.js.gzip" />
     <Content Include="public\app\bower_components\angular\angular.min.js.map" />
@@ -575,6 +576,8 @@
     <Content Include="public\app\bower_components\toastr\README.md" />
     <Content Include="public\app\bower_components\toastr\toastr.less" />
     <Content Include="public\app\bower_components\toastr\toastr.scss" />
+    <Content Include="scripts\angular-ui-router.js" />
+    <Content Include="scripts\angular-ui-router.min.js" />
     <Content Include="server\.DS_Store" />
     <Content Include="server\data\activities.json" />
     <Content Include="server\data\classrooms.json" />
