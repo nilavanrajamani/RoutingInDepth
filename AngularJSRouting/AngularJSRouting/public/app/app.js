@@ -1,3 +1,4 @@
+
 (function () {
 
     var app = angular.module('app', ['ngRoute', 'ui.router']);
@@ -107,19 +108,46 @@
                     myFoo: 'bar'
                 }
             })
-            .state('classroom_summary', {
+            .state('classroom_parent', {
+                abstract: true,
                 url: '/classrooms/:id',
+                templateUrl: '/app/templates/classroom_parent.html',
                 controller: 'ClassroomController',
                 controllerAs: 'classroom',
-                templateUrl: '/app/templates/classroom.html'
+                params: {
+                    classroomMessage: { value: 'Learning is fun!!!' }
+                },
+                resolve: {
+                    classroom: function ($stateParams, dataService) {
+                        return dataService.getClassroom($stateParams.id);
+                    }
+                }
             })
-             .state('classroom_detail', {
-                 url: '/classrooms/{id}/detail/{month}',
-                 controller: 'ClassroomController',
-                 controllerAs: 'classroom',
-                 templateUrl: '/app/templates/classroomDetail.html',
-                 params: {
-                     classroomMessage: { value: 'Learning is fun!!!' }
+            .state('classroom_parent.classroom_summary', {
+                url: '/summary',
+                //templateUrl: '/app/templates/classroom.html',
+                //controller: 'ClassroomSummaryController',
+                //controllerAs: 'classroomSummary'
+                views: {
+                    'classInfo': {
+                        templateUrl: '/app/templates/classroom.html',
+                        controller: 'ClassroomSummaryController',
+                        controllerAs: 'classroomSummary'
+                    },
+                    'classMessage': {
+                        templateUrl: '/app/templates/classroom_message.html',
+                        controller: 'ClassroomMessageController',
+                        controllerAs: 'classroomMessage'
+                    }
+                }
+            })
+             .state('classroom_parent.classroom_detail', {
+                 url: '/detail/{month}',
+                 //templateUrl: '/app/templates/classroomDetail.html',
+                 views: {
+                     'classInfo': {
+                         templateUrl: '/app/templates/classroomDetail.html'
+                     }
                  }
              });
     }]);

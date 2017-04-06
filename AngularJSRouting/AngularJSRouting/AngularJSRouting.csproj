@@ -576,6 +576,10 @@
     <Content Include="public\app\bower_components\toastr\README.md" />
     <Content Include="public\app\bower_components\toastr\toastr.less" />
     <Content Include="public\app\bower_components\toastr\toastr.scss" />
+    <Content Include="public\app\controllers\ClassroomMessageController.js" />
+    <Content Include="public\app\controllers\ClassroomSummaryController.js" />
+    <Content Include="public\app\templates\classroom_message.html" />
+    <Content Include="public\app\templates\classroom_parent.html" />
     <Content Include="scripts\angular-ui-router.js" />
     <Content Include="scripts\angular-ui-router.min.js" />
     <Content Include="server\.DS_Store" />

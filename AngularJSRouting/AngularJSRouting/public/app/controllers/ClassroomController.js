@@ -2,9 +2,9 @@
 
     angular.module('app')
         .controller('ClassroomController', ['dataService', 'notifier', /*'$routeParams', */'$stateParams',
-            ClassroomController]);
+            'classroom', ClassroomController]);
 
-    function ClassroomController(dataService, notifier, /*$routeParams, */$stateParams) {
+    function ClassroomController(dataService, notifier, /*$routeParams, */$stateParams, classroom) {
 
         var vm = this;
 
@@ -31,27 +31,29 @@
         vm.month = $stateParams.month;
         vm.message = $stateParams.classroomMessage;
 
-        dataService.getClassroom($stateParams.id)
-                  .then(function (classroom) {
-                      vm.currentClassroom = classroom;
+        vm.currentClassroom = classroom;
 
-                      if ($stateParams.month) {
-                          if (classroom.activities.length > 0) {
-                              vm.timePeriod = dataService.getMonthName($stateParams.month);
-                          }
-                          else {
-                              vm.timePeriod = 'No activities this month';
-                          }
-                      }
-                      else {
-                          vm.timePeriod = 'All Activities';
-                      }
-                  })
-                  .catch(showError);
+        //dataService.getClassroom($stateParams.id)
+        //          .then(function (classroom) {
+        //              vm.currentClassroom = classroom;
 
-        function showError() {
-            notifier.error(message);
+        if ($stateParams.month) {
+            if (classroom.activities.length > 0) {
+                vm.timePeriod = dataService.getMonthName($stateParams.month);
+            }
+            else {
+                vm.timePeriod = 'No activities this month';
+            }
         }
+        else {
+            vm.timePeriod = 'All Activities';
+        }
+        //          })
+        //          .catch(showError);
+
+        //function showError() {
+        //    notifier.error(message);
+        //}
 
     }
 
